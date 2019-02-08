@@ -7,6 +7,8 @@ import './Css/index.css';
 
 import OneLine from './components/OneLine'
 import Authentication from './components/Authentication'
+import Journal from './components/Journal'
+import Entry from './components/Entry'
 
 class App extends Component {
 
@@ -15,7 +17,8 @@ class App extends Component {
     this.state = {
       isAuthenticated: false,
       email:'',
-      password:''
+      password:'',
+      // userId: firebase.auth().currentUser.uid
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,13 +40,22 @@ class App extends Component {
       })
     }
 
-    firebase.auth().onAuthStateChanged((user) => {
+     firebase.auth().onAuthStateChanged( async (user) => {
       if (user) {
-        console.log('signed in')
+        console.log('signed in', user)
         this.setState({
           isAuthenticated: true,
-          userId: firebase.auth().currentUser.uid
+          userId: user.uid
         });
+
+        await this.props.database.ref().child(`users/${this.state.userId}`).on('value', async snap => {
+          if(snap.val() != null){
+            console.log(Object.values(snap.val()))
+            this.setState({
+              entries: await Object.values(snap.val())
+            })
+          }
+       });
       } else {
         console.log('no User')
         this.setState({
@@ -51,6 +63,16 @@ class App extends Component {
         });
       }
     });
+
+  //   this.props.database.ref().child(`users/${this.state.userId}`).on('value', async snap => {
+  //     console.log(snap.val(),this.state.userId)
+  //     if(snap.val() != null){
+  //       console.log(Object.values(snap.val()))
+  //       this.setState({
+  //         entries: await Object.values(snap.val())
+  //       })
+  //     }
+  //  });
 
   }
 
@@ -94,17 +116,30 @@ class App extends Component {
   }
 
   render() {
+    let entryArray = this.state.entries
+    let entryRendered = [];
+    if(this.state.entries){
+     
+      entryRendered =  entryArray.reverse().map((text, index) => {
+          return (
+          <Entry key= {index} text = {text} />
+        )
+      });
+      console.log(entryArray)
+    }
     return (
       <Router>
         <div className="App-header header">
           <div className = "main">
-          {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout} database = {this.props.database} storage = {this.props.storage} uid = {this.state.userId}/>):(
+          {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout} database = {this.props.database} storage = {this.props.storage} uid = {this.state.userId} value = {this.state.onelineText || null}/>):(
             <Authentication signin = {this.signin} signup = {this.signup} handleInputChange = {this.handleInputChange} isAuthenticated = {this.state.isAuthenticated}/>
           )}   
-          <Switch>
-            <Route path = {'/journal'} component = {Journal}/>
-          </Switch>          
+          
+            
           </div>
+          <div className = 'entries'>
+              {entryRendered}
+            </div>
         </div>
       </Router>
     );

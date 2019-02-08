@@ -113,11 +113,12 @@ nav .clients-active {
 }
 .header {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   padding: 58px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
   background-image: linear-gradient(180deg, rgba(0, 217, 192, 0) 0%, rgba(0, 217, 192, 0.69261208) 29%, #00d9c0 79%, #fcfdaf 100%), url('../images/warren-wong.jpg');
   background-repeat: no-repeat, no-repeat;
   background-position: center center, 49% 77%;
@@ -141,12 +142,17 @@ nav .clients-active {
   border: none;
   font-family: inherit;
   font-size: 2rem;
-  width: 90vw;
+  width: 100%;
   height: 75vh;
   margin: 0 auto;
 }
 .header textarea:focus {
   outline: none;
+}
+@media (min-width: 750px) {
+  .header textarea {
+    height: 50vh;
+  }
 }
 .header .done {
   width: 100px;
@@ -161,6 +167,25 @@ nav .clients-active {
 }
 .header .done:active {
   border-color: #030301;
+}
+.header .main {
+  width: 100%;
+}
+.header .OneLine {
+  margin-bottom: 10px;
+}
+@media (min-width: 750px) {
+  .header .OneLine {
+    width: 70%;
+    margin: 100px auto;
+  }
+}
+.header .entry {
+  background-color: #F8F9FA;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 5px 0;
+  border-radius: 5px;
 }
 .header #typed-strings {
   display: none;
@@ -178,10 +203,10 @@ nav .clients-active {
 }
 @media (min-width: 750px) {
   .header {
-    padding: 60px 10%;
-    flex-direction: row;
-    justify-content: space-evenly;
+    padding: 60px 25%;
     min-height: 100vh;
+    position: relative;
+    top: 50%;
   }
 }
 footer {

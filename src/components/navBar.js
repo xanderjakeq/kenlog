@@ -20,7 +20,7 @@ const NavBar = (props) => {
             </span>
         </button>
         <ul className="nav-links">
-            <li><Link to = '/journal'>Journal</Link></li>
+            {/* <li><Link to = '/journal'>Journal</Link></li> */}
             <li><a href="https://twitter.com/onelineadayhq">Help</a></li>
             <div className="login-container">
                 <li id="login" onClick = {props.signOut}>Log Out</li>

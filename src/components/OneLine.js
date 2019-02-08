@@ -75,6 +75,7 @@ class App extends Component {
             <Write handleChange = {this.handleInputChange} value = {this.state.onelineText}/> 
             {this.state.onelineText ? <button className = "done" onClick = {this.submitLine}>Done</button> : null}
         </div>
+        
     );
   }
 }
