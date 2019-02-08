@@ -50,7 +50,6 @@ class App extends Component {
 
         await this.props.database.ref().child(`users/${this.state.userId}`).on('value', async snap => {
           if(snap.val() != null){
-            console.log(Object.values(snap.val()))
             this.setState({
               entries: await Object.values(snap.val())
             })

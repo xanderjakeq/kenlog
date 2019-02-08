@@ -55,7 +55,7 @@ class Authentication extends Component {
         <div className="form-wrapper">
           <h1>Sign In</h1>
           <p>
-            Warning: Low security handling. 🙈
+            Warning: Low security handling. <span role='img' aria-label = 'monkey'>🙈</span>
           </p>
           <div className = "form">
             <div className="form-item">
@@ -67,8 +67,8 @@ class Authentication extends Component {
               <input type="password" name="password" required="required" placeholder="Password" onChange = {this.props.handleInputChange}></input>
             </div>
             <div className="button-panel">
-              <button onClick = {this.props.signin} className="button" title="Sign In" value="Sign In">Sign In</button>
-              <button onClick = {this.props.signup} className="button" title="Sign Up" value="Sign Un">Sign Up</button>
+              <button onClick = {this.props.signin} className="button signup-button" title="Sign In" value="Sign In">Sign In</button>
+              <button onClick = {this.props.signup} className="button login-button" title="Sign Up" value="Sign Un">Sign Up</button>
             </div>
           </div>
           <div className="form-footer">

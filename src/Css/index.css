@@ -187,6 +187,41 @@ nav .clients-active {
   padding: 5px 0;
   border-radius: 5px;
 }
+.header .signup-button {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #030301;
+  border-radius: 100px;
+  color: #030301;
+  background: none;
+  width: 80px;
+  height: 40px;
+}
+.header .signup-button:hover {
+  border-color: white;
+}
+.header .signup-button:active {
+  border-color: #030301;
+}
+.header .login-button {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #030301;
+  border-radius: 100px;
+  color: white;
+  background: #030301;
+  width: 80px;
+  height: 40px;
+}
+.header .login-button:hover {
+  border-color: white;
+}
+.header .login-button:active {
+  border-color: #030301;
+}
+.header button {
+  margin-right: 10px;
+}
 .header #typed-strings {
   display: none;
 }
@@ -357,6 +392,12 @@ a {
 li {
   list-style: none;
   margin-bottom: 30px;
+}
+input {
+  border: none;
+  padding: 10px;
+  border-radius: 2px;
+  margin: 5px 0;
 }
 button:hover {
   cursor: pointer;
