@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import logo from '../svgs/logo.svg'
 
@@ -19,14 +20,10 @@ const NavBar = (props) => {
             </span>
         </button>
         <ul className="nav-links">
-            <li><a href="https://www.apple.com/ios/app-store/">Get the App</a></li>
+            <li><Link to = '/journal'>Journal</Link></li>
             <li><a href="https://twitter.com/onelineadayhq">Help</a></li>
             <div className="login-container">
                 <li id="login" onClick = {props.signOut}>Log Out</li>
-                {/* <ul className="client-container">
-                    <li><a href="">Settings</a></li>
-                    <li><a href="">Profile</a></li>
-                </ul> */}
             </div>
         </ul>
     </nav>

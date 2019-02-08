@@ -95,13 +95,18 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
         <div className="App-header header">
           <div className = "main">
-          {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout}/>):(
+          {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout} database = {this.props.database} storage = {this.props.storage} uid = {this.state.userId}/>):(
             <Authentication signin = {this.signin} signup = {this.signup} handleInputChange = {this.handleInputChange} isAuthenticated = {this.state.isAuthenticated}/>
-          )}              
+          )}   
+          <Switch>
+            <Route path = {'/journal'} component = {Journal}/>
+          </Switch>          
           </div>
         </div>
+      </Router>
     );
   }
 }
