@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 
+import logo from '../svgs/logo.svg'
 
 
-const SignInForm = (props) => {
+const NavBar = (props) => {
 
     if (props.isAuthenticated) {
         return null;
       }
 
     return (
-        <div className="form-wrapper">
-          <h1>Sign In</h1>
-          <div className = "form">
-            <div className="form-item">
-              <label htmlFor="email"></label>
-              <input type="email" name="email" required="required" placeholder="Email Address" onChange = {props.handleInputChange}></input>
+        <nav>
+        <a href="/"><img src={logo} alt="Logo" className="logo"/></a>
+        <img src="./images/logo-with-bg.png" alt="Logo for preview" id = "hidden-logo"/>
+        <button className="hamburger hamburger--collapse" type="button" aria-label="Mobile Menu">
+            <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+            </span>
+        </button>
+        <ul className="nav-links">
+            <li><a href="https://www.apple.com/ios/app-store/">Get the App</a></li>
+            <li><a href="https://twitter.com/onelineadayhq">Help</a></li>
+            <div className="login-container">
+                <li id="login" onClick = {props.signOut}>Log Out</li>
+                {/* <ul className="client-container">
+                    <li><a href="">Settings</a></li>
+                    <li><a href="">Profile</a></li>
+                </ul> */}
             </div>
-            <div className="form-item">
-              <label htmlFor="password"></label>
-              <input type="password" name="password" required="required" placeholder="Password" onChange = {props.handleInputChange}></input>
-            </div>
-            <div className="button-panel">
-              <button onClick = {props.signin} className="button" title="Sign In" value="Sign In">Sign In</button>
-            </div>
-          </div>
-          <div className="form-footer">
-            {/* <p><a href="#">Create an account</a></p>
-            <p><a href="#">Forgot password?</a></p> */}
-          </div>
-        </div>
+        </ul>
+    </nav>
     );
 }
 
-export default SignInForm;
+export default NavBar;
