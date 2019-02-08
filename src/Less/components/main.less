@@ -1,6 +1,6 @@
 .header{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     padding: @nav-height-mobile 10px;
 
     display: flex;
@@ -30,6 +30,7 @@
         width: 100%;
         height: 75vh;
         margin: 0 auto;
+        resize: none;
         &:focus{
             outline: none;
         }
@@ -72,16 +73,22 @@
     background-position: center center, 49% 77%;
 
 
+    .form-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     
     .signup-button{
         .app-button(@rich-black, none);
         width: 80px;
-    height: 40px;
+        height: 40px;
     }
     .login-button{
         .app-button(white,@rich-black);
         width: 80px;
-    height: 40px;
+        height: 40px;
     }
     
     button{
@@ -109,6 +116,7 @@
 
     @media @tablet{
         padding: @nav-height-desktop 25%;
+        width: 100vw;
         min-height: 100vh;
         position: relative;
         top: 50%;
