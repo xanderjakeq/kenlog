@@ -59,7 +59,8 @@ class App extends Component {
       } else {
         console.log('no User')
         this.setState({
-          isAuthenticated: false
+          isAuthenticated: false,
+          entries: []
         });
       }
     });

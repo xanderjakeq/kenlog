@@ -54,6 +54,9 @@ class Authentication extends Component {
       return (
         <div className="form-wrapper">
           <h1>Sign In</h1>
+          <p>
+            Warning: Low security handling. 🙈
+          </p>
           <div className = "form">
             <div className="form-item">
               <label htmlFor="email"></label>
