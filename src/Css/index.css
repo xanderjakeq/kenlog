@@ -193,6 +193,9 @@ nav .clients-active {
   flex-direction: column;
   align-items: center;
 }
+.header .form-wrapper .form {
+  margin-top: 10px;
+}
 .header .signup-button {
   width: 100px;
   height: 50px;
@@ -241,6 +244,13 @@ nav .clients-active {
 .header #typed::after {
   content: '|';
   display: inline;
+}
+.header #logoInAuth {
+  width: 50px;
+  height: 50px;
+}
+.header #appname {
+  font-weight: 200;
 }
 @media (min-width: 750px) {
   .header {

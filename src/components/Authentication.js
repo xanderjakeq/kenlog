@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import * as firebase from 'firebase';
 
-// import './Authentication.css';
+import logo from '../svgs/logo.svg'
 
-// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-// import firebase from 'firebase';
 
-// import UserProfile from '../UserProfile/UserProfile'
 
 
 class Authentication extends Component {
@@ -20,31 +17,12 @@ class Authentication extends Component {
     };
   }
 
-
-//   // Configure FirebaseUI.
-//   uiConfig = {
-//     // Popup signin flow rather than redirect flow.
-//     signInFlow: 'redirect',
-//     // We will display Google and Facebook as auth providers.
-//     signInOptions: [
-//       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//     ],
-//     callbacks: {
-//       // Avoid redirects after sign-in.
-//       signInSuccessWithAuthResult: () => false
-//     }
-//   };
-
-  // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
-    // this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
-    //     (user) => this.setState({isSignedIn: !!user})
-    // );
+    
   }
   
   // Make sure we un-register Firebase observers when the component unmounts.
   componentWillUnmount() {
-    // this.unregisterAuthObserver();
     
   }
 
@@ -53,9 +31,10 @@ class Authentication extends Component {
     if (!this.state.isSignedIn) {
       return (
         <div className="form-wrapper">
-          <h1>Sign In</h1>
+          <img src={logo} alt="logo" id="logoInAuth"/>
+          <h1 id="appname">Welcome to <em><strong>KenLog</strong></em></h1>
           <p>
-            Warning: Low security handling. <span role='img' aria-label = 'monkey'>🙈</span>
+            A place for your thoughts <span role='img' aria-label = 'monkey'>🙈</span>
           </p>
           <div className = "form">
             <div className="form-item">

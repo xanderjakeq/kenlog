@@ -22,6 +22,7 @@ const NavBar = (props) => {
         <ul className="nav-links">
             {/* <li><Link to = '/journal'>Journal</Link></li> */}
             <li><a href="https://twitter.com/onelineadayhq">Help</a></li>
+            <li><a href="https://twitter.com/onelineadayhq">Get The App</a></li>
             <div className="login-container">
                 <li id="login" onClick = {props.signOut}>Log Out</li>
             </div>
