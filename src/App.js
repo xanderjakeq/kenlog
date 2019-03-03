@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
 
 import * as firebase from 'firebase'
 
@@ -29,16 +29,6 @@ class App extends Component {
 
 
   componentDidMount(){
-    const hamburger = document.querySelector('.hamburger')
-    const navLinks = document.querySelector('.nav-links')
-
-    if(hamburger){
-      hamburger.addEventListener('click', e => {
-          e.currentTarget.classList.toggle('is-active')
-
-          navLinks.classList.toggle('active')
-      })
-    }
 
      firebase.auth().onAuthStateChanged( async (user) => {
       if (user) {
@@ -91,7 +81,7 @@ class App extends Component {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log('someError')
+      alert(errorMessage)
       // ...
     });
   };
@@ -101,15 +91,13 @@ class App extends Component {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log('someError')
+      alert(error.message)
       // ...
     });
   };  
 
   signout(){
-    console.log('signout Clicked')
     firebase.auth().signOut().then(function() {
-      
     }).catch(function(error) {
       // An error happened.
     });
@@ -119,27 +107,20 @@ class App extends Component {
     let entryArray = this.state.entries
     let entryRendered = [];
     if(this.state.entries){
-     
       entryRendered =  entryArray.reverse().map((text, index) => {
           return (
           <Entry key= {index} text = {text} />
         )
       });
-      console.log(entryArray)
     }
     return (
       <Router>
         <div className="App-header header">
           <div className = "main">
-          {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout} database = {this.props.database} storage = {this.props.storage} uid = {this.state.userId} value = {this.state.onelineText || null}/>):(
-            <Authentication signin = {this.signin} signup = {this.signup} handleInputChange = {this.handleInputChange} isAuthenticated = {this.state.isAuthenticated}/>
-          )}   
-          
-            
+            {this.state.isAuthenticated === true ? (<OneLine signOut = {this.signout} database = {this.props.database} storage = {this.props.storage} uid = {this.state.userId} value = {this.state.onelineText || null} entries = {entryRendered}/>):(
+              <Authentication signin = {this.signin} signup = {this.signup} handleInputChange = {this.handleInputChange} isAuthenticated = {this.state.isAuthenticated}/>
+            )}   
           </div>
-          <div className = 'entries'>
-              {entryRendered}
-            </div>
         </div>
       </Router>
     );

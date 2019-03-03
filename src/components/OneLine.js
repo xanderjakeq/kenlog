@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 
 import NavBar from './NavBar'
 import Write from './Write'
+import Logs from './Logs'
 
 
 
@@ -56,6 +57,7 @@ class App extends Component {
 
   submitLine() {
     this.props.database.ref().child(`users/${this.props.uid}`).push(this.state.onelineText);
+    
     document.getElementById('onelineTextArea').textContent = ''
     this.setState({
         onelineText: ''
@@ -73,8 +75,12 @@ class App extends Component {
     return (
         <div className="OneLine">
             <NavBar signOut = {this.props.signOut}/>
-            <Write handleChange = {this.handleInputChange} value = {this.state.onelineText}/> 
-            {this.state.onelineText ? <button className = "done" onClick = {this.submitLine}>Done</button> : null}
+            {/* <Router> */}
+              <div>
+              <Route exact path = '/'  render = {(props) => <Write submitLine = {this.submitLine} handleChange = {this.handleInputChange} value = {this.state.onelineText || ''}/> }/>
+              <Route exact path = '/entries'  render = {(props) => <Logs {...props} entries = {this.props.entries}/>} />
+            </div>
+            {/* </Router> */}
         </div>
         
     );

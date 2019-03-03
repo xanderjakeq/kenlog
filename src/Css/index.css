@@ -34,6 +34,7 @@ nav ul {
   display: flex;
   opacity: 0;
   position: absolute;
+  top: -100px;
   width: 100vw;
   height: 0;
   flex-direction: column;
@@ -63,6 +64,7 @@ nav ul {
 nav .active {
   opacity: 1;
   height: 100vh;
+  top: 0;
 }
 @media (min-width: 750px) {
   nav .active {
@@ -104,7 +106,6 @@ nav .clients-active {
   nav {
     height: 60px;
     background: white;
-    z-index: 12;
     padding: 0 10%;
   }
   nav .hamburger {
@@ -118,10 +119,6 @@ nav .clients-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
-  background-image: linear-gradient(180deg, rgba(0, 217, 192, 0) 0%, rgba(0, 217, 192, 0.69261208) 29%, #00d9c0 79%, #fcfdaf 100%), url('../images/warren-wong.jpg');
-  background-repeat: no-repeat, no-repeat;
-  background-position: center center, 49% 77%;
 }
 .header h1 {
   font-size: 3rem;
@@ -255,7 +252,6 @@ nav .clients-active {
 @media (min-width: 750px) {
   .header {
     padding: 60px 25%;
-    width: 100vw;
     min-height: 100vh;
     position: relative;
     top: 50%;
@@ -344,67 +340,15 @@ footer .formalities {
     justify-content: space-evenly;
   }
 }
-#team-container {
-  width: 100%;
-  height: fit-content;
-  margin: 100px 0 0;
-}
-#team-container h1,
-#team-container p {
-  width: fit-content;
-  margin: 0 auto;
-}
-@media (min-width: 750px) {
-  #team-container h1,
-  #team-container p {
-    margin: unset;
-  }
-}
-#team-container .prof-pic {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 100px;
-}
-#team-container .prof-pic img {
-  width: 100%;
-}
-#team-container .members-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
-  margin: 100px auto;
-}
-#team-container .members-container .member {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-#team-container .members-container .member li {
-  margin: 5px 0;
-}
-@media (min-width: 750px) {
-  #team-container .members-container .member {
-    width: 33%;
-  }
-}
-@media (min-width: 750px) {
-  #team-container .members-container {
-    width: 100%;
-  }
-}
-@media (min-width: 750px) {
-  #team-container h1,
-  #team-container p {
-    width: 500px;
-  }
+html {
+  background-image: linear-gradient(180deg, rgba(0, 217, 192, 0) 0%, rgba(0, 217, 192, 0.69261208) 29%, #00d9c0 79%, #fcfdaf 100%), url('../images/warren-wong.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center, 49% 77%;
+  background-attachment: fixed;
 }
 a {
   text-decoration: none;
+  width: unset;
 }
 li {
   list-style: none;

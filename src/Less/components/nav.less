@@ -29,6 +29,7 @@ nav{
         display: flex;
         opacity: 0;
         position: absolute;
+        top: -100px;
         width: 100vw;
         height: 0;
         flex-direction: column;
@@ -49,7 +50,6 @@ nav{
             min-width: fit-content;
             position: unset;
             justify-content: space-between;
-
             
 
             li{
@@ -64,6 +64,7 @@ nav{
     .active{  
         opacity: 1;
         height: 100vh;
+        top: 0;
 
         @media @tablet {
             height: @nav-height-desktop;
@@ -111,7 +112,7 @@ nav{
     @media @tablet {
         height: @nav-height-desktop;
         background: white;
-        z-index: 12;
+        // z-index: 12;
         padding: 0 10%;
         .hamburger{
             display: none;

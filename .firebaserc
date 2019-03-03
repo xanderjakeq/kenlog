@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "firebasedeploy": "oneline-a-day"
+  }
+}
